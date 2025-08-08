@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Which Stuck Are You? • Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1 class="title">Find Your Best Next Book</h1>
+      <p class="subtitle">Answer each statement with <strong>Yes</strong> or <strong>No</strong>. Your top patterns determine your primary and secondary recommendations.</p>
+    </header>
+
+    <form id="quiz-form" class="card">
+
+      <!-- NOTE: data-primary=4pts, data-secondary=2pts, data-tertiary=1pt -->
+      <div class="quiz-question" data-question="1"
+           data-primary="Clarity Collapse"
+           data-secondary="Contextual Amnesia"
+           data-tertiary="Avoidance Architecture">
+        <p class="q">1) I often sit down to work and can’t tell what actually matters.</p>
+        <div class="choices">
+          <label><input type="radio" name="q1" value="yes" required> Yes</label>
+          <label><input type="radio" name="q1" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-question="2"
+           data-primary="Systemic Overload"
+           data-secondary="Trust Erosion"
+           data-tertiary="Pacing Drift">
+        <p class="q">2) I move through tasks all day but rarely feel real progress.</p>
+        <div class="choices">
+          <label><input type="radio" name="q2" value="yes" required> Yes</label>
+          <label><input type="radio" name="q2" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-question="3"
+           data-primary="Role Drift"
+           data-secondary="Delegation Breakdown"
+           data-tertiary="Clarity Collapse">
+        <p class="q">3) I get my work done, but it feels misaligned with who I am or what I value.</p>
+        <div class="choices">
+          <label><input type="radio" name="q3" value="yes" required> Yes</label>
+          <label><input type="radio" name="q3" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-question="4"
+           data-primary="Avoidance Architecture"
+           data-secondary="Friction-First Execution"
+           data-tertiary="Rebuild Resistance">
+        <p class="q">4) I procrastinate on high-value tasks, even when they matter deeply to me.</p>
+        <div class="choices">
+          <label><input type="radio" name="q4" value="yes" required> Yes</label>
+          <label><input type="radio" name="q4" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-question="5"
+           data-primary="Friction-First Execution"
+           data-secondary="Pacing Drift"
+           data-tertiary="Systemic Overload">
+        <p class="q">5) I delay important work until the last minute, then sprint and burn out.</p>
+        <div class="choices">
+          <label><input type="radio" name="q5" value="yes" required> Yes</label>
+          <label><input type="radio" name="q5" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-question="6"
+           data-primary="Rebuild Resistance"
+           data-secondary="Trust Erosion"
+           data-tertiary="Avoidance Architecture">
+        <p class="q">6) I’ve tried rebuilding my systems before — they never seem to stick.</p>
+        <div class="choices">
+          <label><input type="radio" name="q6" value="yes" required> Yes</label>
+          <label><input type="radio" name="q6" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-question="7"
+           data-primary="Delegation Breakdown"
+           data-secondary="Verification Bypass"
+           data-tertiary="Feedback Blindness">
+        <p class="q">7) I avoid delegating because I’m unsure others will meet the mark.</p>
+        <div class="choices">
+          <label><input type="radio" name="q7" value="yes" required> Yes</label>
+          <label><input type="radio" name="q7" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-question="8"
+           data-primary="Verification Bypass"
+           data-secondary="Clarity Collapse"
+           data-tertiary="Contextual Amnesia">
+        <p class="q">8) I often feel unsure whether an outcome is still aligned with intent.</p>
+        <div class="choices">
+          <label><input type="radio" name="q8" value="yes" required> Yes</label>
+          <label><input type="radio" name="q8" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-question="9"
+           data-primary="Feedback Blindness"
+           data-secondary="Trust Erosion"
+           data-tertiary="Verification Bypass">
+        <p class="q">9) My team or system moves smoothly but I rarely hear disagreement or resistance.</p>
+        <div class="choices">
+          <label><input type="radio" name="q9" value="yes" required> Yes</label>
+          <label><input type="radio" name="q9" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-question="10"
+           data-primary="Contextual Amnesia"
+           data-secondary="Pacing Drift"
+           data-tertiary="Rebuild Resistance">
+        <p class="q">10) I can’t remember why some decisions were made — we just keep moving.</p>
+        <div class="choices">
+          <label><input type="radio" name="q10" value="yes" required> Yes</label>
+          <label><input type="radio" name="q10" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-question="11"
+           data-primary="Trust Erosion"
+           data-secondary="Verification Bypass"
+           data-tertiary="Delegation Breakdown">
+        <p class="q">11) I often wonder if I can still trust the outputs our systems rely on.</p>
+        <div class="choices">
+          <label><input type="radio" name="q11" value="yes" required> Yes</label>
+          <label><input type="radio" name="q11" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-question="12"
+           data-primary="Pacing Drift"
+           data-secondary="Systemic Overload"
+           data-tertiary="Clarity Collapse">
+        <p class="q">12) Things are moving fast — but I’m not sure they’re moving in the right direction.</p>
+        <div class="choices">
+          <label><input type="radio" name="q12" value="yes" required> Yes</label>
+          <label><input type="radio" name="q12" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">See My Book Recommendations</button>
+        <div class="error" id="error-msg" role="alert" aria-live="polite">Please answer all 12 questions.</div>
+      </div>
+    </form>
+  </main>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Category -> Book
+    const categoryToBook = {
+      "Clarity Collapse": "Fix the Flow",
+      "Systemic Overload": "The Cost You Didn't Count",
+      "Role Drift": "Polished Outside Broken Inside",
+      "Avoidance Architecture": "Start With What Hurts",
+      "Friction-First Execution": "Start Hard Coast Later",
+      "Rebuild Resistance": "Finish It Right",
+      "Delegation Breakdown": "How to Think Like AI, So You Don't Stop Thinking At All",
+      "Verification Bypass": "What Automation Erases",
+      "Feedback Blindness": "Start Smaller Stay Standing",
+      "Contextual Amnesia": "The Cost of Rushing",
+      // For future books
+      "Trust Erosion": "",
+      "Pacing Drift": ""
+    };
+
+    // Placeholder cover images — swap later
+    const bookImages = {
+      "Fix the Flow": "https://example.com/covers/fix-the-flow.jpg",
+      "The Cost You Didn't Count": "https://example.com/covers/cost-you-didnt-count.jpg",
+      "Polished Outside Broken Inside": "https://example.com/covers/polished-outside-broken-inside.jpg",
+      "Start With What Hurts": "https://example.com/covers/start-with-what-hurts.jpg",
+      "Start Hard Coast Later": "https://example.com/covers/start-hard-coast-later.jpg",
+      "Finish It Right": "https://example.com/covers/finish-it-right.jpg",
+      "How to Think Like AI, So You Don't Stop Thinking At All": "https://example.com/covers/think-like-ai.jpg",
+      "What Automation Erases": "https://example.com/covers/what-automation-erases.jpg",
+      "Start Smaller Stay Standing": "https://example.com/covers/start-smaller-stay-standing.jpg",
+      "The Cost of Rushing": "https://example.com/covers/the-cost-of-rushing.jpg"
+    };
+
+    document.getElementById("quiz-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const errorEl = document.getElementById("error-msg");
+      errorEl.style.display = "none";
+
+      // Ensure all 12 have an answer
+      let allAnswered = true;
+      document.querySelectorAll(".quiz-question").forEach(q => {
+        if (!q.querySelector("input[type='radio']:checked")) allAnswered = false;
+      });
+      if (!allAnswered) { errorEl.style.display = "block"; return; }
+
+      // Score accumulation: Yes adds 4/2/1; No adds 0
+      const scores = {};
+      document.querySelectorAll(".quiz-question").forEach(q => {
+        const selected = q.querySelector("input[type='radio']:checked");
+        if (selected && selected.value === "yes") {
+          const p = q.dataset.primary, s = q.dataset.secondary, t = q.dataset.tertiary;
+          scores[p] = (scores[p] || 0) + 4;
+          scores[s] = (scores[s] || 0) + 2;
+          scores[t] = (scores[t] || 0) + 1;
+        }
+      });
+
+      // Rank categories (tie-breaker by name for determinism)
+      const ranked = Object.entries(scores)
+        .sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0]))
+        .map(([k]) => k);
+
+      const primaryStack = ranked.slice(0,3);
+      const secondaryStack = ranked.filter(c => !primaryStack.includes(c)).slice(0,3);
+
+      const primaryBook = categoryToBook[primaryStack[0]] || "";
+      const secondaryBook = categoryToBook[secondaryStack[0]] || "";
+      const primaryImg = primaryBook ? (bookImages[primaryBook] || "") : "";
+      const secondaryImg = secondaryBook ? (bookImages[secondaryBook] || "") : "";
+
+      // Build query for results page
+      const params = new URLSearchParams({
+        primary_category: primaryStack[0] || "",
+        secondary_category: primaryStack[1] || "",
+        tertiary_category:  primaryStack[2] || "",
+        secondary_book_primary_category:   secondaryStack[0] || "",
+        secondary_book_secondary_category: secondaryStack[1] || "",
+        secondary_book_tertiary_category:  secondaryStack[2] || "",
+        primary_book_name: primaryBook,
+        secondary_book_name: secondaryBook,
+        primary_book_image: primaryImg,
+        secondary_book_image: secondaryImg
+      });
+
+      window.location.href = "book-quiz-results-page.html?" + params.toString();
+    });
+  });
+  </script>
+</body>
+</html>
