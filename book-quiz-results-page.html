@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Your Book Recommendations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1 class="title">Your Recommendations</h1>
+      <p class="subtitle">Based on your answers, here are your best-fit books.</p>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <h2 class="card-title" id="primary-book-title">Primary Recommendation</h2>
+        <img id="primary-book-image" alt="" class="cover">
+        <div class="chips">
+          <span class="chip" id="primary-cat-1"></span>
+          <span class="chip" id="primary-cat-2"></span>
+          <span class="chip" id="primary-cat-3"></span>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2 class="card-title" id="secondary-book-title">Secondary Recommendation</h2>
+        <img id="secondary-book-image" alt="" class="cover">
+        <div class="chips">
+          <span class="chip" id="secondary-cat-1"></span>
+          <span class="chip" id="secondary-cat-2"></span>
+          <span class="chip" id="secondary-cat-3"></span>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const getParam = (k) => decodeURIComponent(new URLSearchParams(window.location.search).get(k) || "");
+
+    const primary = {
+      c1: getParam("primary_category"),
+      c2: getParam("secondary_category"),
+      c3: getParam("tertiary_category"),
+      name: getParam("primary_book_name"),
+      img: getParam("primary_book_image")
+    };
+    const secondary = {
+      c1: getParam("secondary_book_primary_category"),
+      c2: getParam("secondary_book_secondary_category"),
+      c3: getParam("secondary_book_tertiary_category"),
+      name: getParam("secondary_book_name"),
+      img: getParam("secondary_book_image")
+    };
+
+    // Fallback mapping if names/images aren't in URL
+    const categoryToBook = {
+      "Clarity Collapse": "Fix the Flow",
+      "Systemic Overload": "The Cost You Didn't Count",
+      "Role Drift": "Polished Outside Broken Inside",
+      "Avoidance Architecture": "Start With What Hurts",
+      "Friction-First Execution": "Start Hard Coast Later",
+      "Rebuild Resistance": "Finish It Right",
+      "Delegation Breakdown": "How to Think Like AI, So You Don't Stop Thinking At All",
+      "Verification Bypass": "What Automation Erases",
+      "Feedback Blindness": "Start Smaller Stay Standing",
+      "Contextual Amnesia": "The Cost of Rushing"
+    };
+    const bookImages = {
+      "Fix the Flow": "https://example.com/covers/fix-the-flow.jpg",
+      "The Cost You Didn't Count": "https://example.com/covers/cost-you-didnt-count.jpg",
+      "Polished Outside Broken Inside": "https://example.com/covers/polished-outside-broken-inside.jpg",
+      "Start With What Hurts": "https://example.com/covers/start-with-what-hurts.jpg",
+      "Start Hard Coast Later": "https://example.com/covers/start-hard-coast-later.jpg",
+      "Finish It Right": "https://example.com/covers/finish-it-right.jpg",
+      "How to Think Like AI, So You Don't Stop Thinking At All": "https://example.com/covers/think-like-ai.jpg",
+      "What Automation Erases": "https://example.com/covers/what-automation-erases.jpg",
+      "Start Smaller Stay Standing": "https://example.com/covers/start-smaller-stay-standing.jpg",
+      "The Cost of Rushing": "https://example.com/covers/the-cost-of-rushing.jpg"
+    };
+
+    // Primary render
+    const pName = primary.name || (primary.c1 ? categoryToBook[primary.c1] : "") || "No Match";
+    const pImg  = primary.img || bookImages[pName] || "";
+    document.getElementById("primary-book-title").textContent = pName;
+    if (pImg) document.getElementById("primary-book-image").src = pImg;
+    document.getElementById("primary-cat-1").textContent = primary.c1 || "";
+    document.getElementById("primary-cat-2").textContent = primary.c2 || "";
+    document.getElementById("primary-cat-3").textContent = primary.c3 || "";
+
+    // Secondary render
+    const sName = secondary.name || (secondary.c1 ? categoryToBook[secondary.c1] : "") || "No Match";
+    const sImg  = secondary.img || bookImages[sName] || "";
+    document.getElementById("secondary-book-title").textContent = sName;
+    if (sImg) document.getElementById("secondary-book-image").src = sImg;
+    document.getElementById("secondary-cat-1").textContent = secondary.c1 || "";
+    document.getElementById("secondary-cat-2").textContent = secondary.c2 || "";
+    document.getElementById("secondary-cat-3").textContent = secondary.c3 || "";
+  });
+  </script>
+</body>
+</html>
