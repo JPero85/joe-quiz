@@ -427,6 +427,27 @@
       if (sImg) { sImgEl.src = sImg; sImgEl.alt = sBook; } else { sImgEl.removeAttribute("src"); sImgEl.alt = ""; }
       document.getElementById("secondary-buy-btn").href = getBuyLink(sBook);
 
+      .buy-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 0.8rem 1.2rem;
+  font-weight: 700;
+  background: #0b1f3a; /* navy blue */
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(11, 31, 58, 0.25);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.buy-btn:hover {
+  background: #061126; /* darker navy */
+  transform: translateY(-1px);
+}
+.buy-btn:active {
+  transform: translateY(1px);
+}
+
+
       // Swap views
       form.style.display = "none";
       results.style.display = "grid";
