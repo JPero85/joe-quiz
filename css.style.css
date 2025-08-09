@@ -146,4 +146,23 @@ body {
   margin: 0.5rem auto;
   max-width: 250px;
 }
+.buy-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 0.8rem 1.2rem;
+  font-weight: 700;
+  background: #2563eb; /* blue button */
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.buy-btn:hover {
+  background: #1e40af; /* darker blue */
+  transform: translateY(-1px);
+}
+.buy-btn:active {
+  transform: translateY(1px);
+}
 
