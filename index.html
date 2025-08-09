@@ -4,31 +4,8 @@
   <meta charset="utf-8" />
   <title>Which Stuck Are You? • Quiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root { --text:#0f172a; --muted:#475569; --border:#e2e8f0; --bg:#f8fafc; --card:#fff; }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
-    .container{max-width:900px;margin:0 auto;padding:2rem 1rem;text-align:center}
-    .title{font-size:clamp(30px,3.2vw,40px);font-weight:800;margin:0 0 .4rem}
-    .subtitle{color:var(--muted);margin:.2rem 0}
-    .intro-list{color:var(--text);text-align:left;display:inline-block;margin:.4rem 0 0;padding-left:1.2rem}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1rem;box-shadow:0 1px 2px rgba(15,23,42,.04);text-align:left;display:inline-block;width:100%}
-    .q{font-weight:700;margin:.2rem 0 .5rem}
-    .quiz-question{border:1px solid var(--border);border-radius:12px;padding:12px;margin:.6rem 0;background:#fff;text-align:left}
-    .choices{display:flex;gap:1rem;flex-wrap:wrap}
-    .choices label{display:inline-flex;align-items:center;gap:.5rem}
-    .actions{display:flex;justify-content:center;gap:12px;align-items:center;margin-top:12px}
-    .btn{appearance:none;border:0;border-radius:12px;padding:.9rem 1.1rem;font-weight:700;cursor:pointer;background:#111827;color:#fff;box-shadow:0 6px 18px rgba(17,24,39,.18)}
-    .btn:active{transform:translateY(1px)}
-    .error{display:none;color:#b91c1c;font-weight:700}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:1.25rem}
-    .card-title{font-weight:800;margin:.2rem 0 .6rem;text-align:center}
-    .cover{width:100%;height:auto;border-radius:12px;border:1px solid var(--border);background:#f1f5f9;display:block;margin:.25rem auto;max-width:280px}
-    /* bump base sizes a bit for readability */
-    .container, .container p, .container li, .container label, .container button, .container h1, .container h2 { font-size: 1.15rem; line-height: 1.65; }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <main class="container">
@@ -42,15 +19,14 @@
         <li>👍 <strong>"Yes, this is true for me"</strong> means the statement resonates or regularly shows up in your work.</li>
         <li>👎 <strong>"No, this doesn't reflect my experience"</strong> means it's not something you currently deal with.</li>
       </ul>
-      <p class="subtitle" style="margin-top:8px;">You'll get a tailored recommendation based on your unique pattern of friction.</p>
+      <p class="subtitle">You'll get a tailored recommendation based on your unique pattern of friction.</p>
     </header>
 
     <!-- QUIZ -->
-    <form id="quiz-form" class="card">
+    <form id="quiz-form" class="card" novalidate>
       <!-- data-primary=4pts, data-secondary=2pts, data-tertiary=1pt -->
 
-      <div class="quiz-question" data-question="1"
-           data-primary="Clarity Collapse" data-secondary="Contextual Amnesia" data-tertiary="Avoidance Architecture">
+      <div class="quiz-question" data-question="1" data-primary="Clarity Collapse" data-secondary="Contextual Amnesia" data-tertiary="Avoidance Architecture">
         <p class="q">1) I often sit down to work and can’t tell what actually matters.</p>
         <div class="choices">
           <label><input type="radio" name="q1" value="yes" required> Yes</label>
@@ -58,8 +34,7 @@
         </div>
       </div>
 
-      <div class="quiz-question" data-question="2"
-           data-primary="Systemic Overload" data-secondary="Trust Erosion" data-tertiary="Pacing Drift">
+      <div class="quiz-question" data-question="2" data-primary="Systemic Overload" data-secondary="Trust Erosion" data-tertiary="Pacing Drift">
         <p class="q">2) I move through tasks all day but rarely feel real progress.</p>
         <div class="choices">
           <label><input type="radio" name="q2" value="yes" required> Yes</label>
@@ -67,8 +42,7 @@
         </div>
       </div>
 
-      <div class="quiz-question" data-question="3"
-           data-primary="Role Drift" data-secondary="Delegation Breakdown" data-tertiary="Clarity Collapse">
+      <div class="quiz-question" data-question="3" data-primary="Role Drift" data-secondary="Delegation Breakdown" data-tertiary="Clarity Collapse">
         <p class="q">3) I get my work done, but it feels misaligned with who I am or what I value.</p>
         <div class="choices">
           <label><input type="radio" name="q3" value="yes" required> Yes</label>
@@ -76,8 +50,7 @@
         </div>
       </div>
 
-      <div class="quiz-question" data-question="4"
-           data-primary="Avoidance Architecture" data-secondary="Friction-First Execution" data-tertiary="Rebuild Resistance">
+      <div class="quiz-question" data-question="4" data-primary="Avoidance Architecture" data-secondary="Friction-First Execution" data-tertiary="Rebuild Resistance">
         <p class="q">4) I procrastinate on high-value tasks, even when they matter deeply to me.</p>
         <div class="choices">
           <label><input type="radio" name="q4" value="yes" required> Yes</label>
@@ -85,8 +58,7 @@
         </div>
       </div>
 
-      <div class="quiz-question" data-question="5"
-           data-primary="Friction-First Execution" data-secondary="Pacing Drift" data-tertiary="Systemic Overload">
+      <div class="quiz-question" data-question="5" data-primary="Friction-First Execution" data-secondary="Pacing Drift" data-tertiary="Systemic Overload">
         <p class="q">5) I delay important work until the last minute, then sprint and burn out.</p>
         <div class="choices">
           <label><input type="radio" name="q5" value="yes" required> Yes</label>
@@ -94,8 +66,7 @@
         </div>
       </div>
 
-      <div class="quiz-question" data-question="6"
-           data-primary="Rebuild Resistance" data-secondary="Trust Erosion" data-tertiary="Avoidance Architecture">
+      <div class="quiz-question" data-question="6" data-primary="Rebuild Resistance" data-secondary="Trust Erosion" data-tertiary="Avoidance Architecture">
         <p class="q">6) I’ve tried rebuilding my systems before — they never seem to stick.</p>
         <div class="choices">
           <label><input type="radio" name="q6" value="yes" required> Yes</label>
@@ -103,8 +74,7 @@
         </div>
       </div>
 
-      <div class="quiz-question" data-question="7"
-           data-primary="Delegation Breakdown" data-secondary="Verification Bypass" data-tertiary="Feedback Blindness">
+      <div class="quiz-question" data-question="7" data-primary="Delegation Breakdown" data-secondary="Verification Bypass" data-tertiary="Feedback Blindness">
         <p class="q">7) I avoid delegating because I’m unsure others will meet the mark.</p>
         <div class="choices">
           <label><input type="radio" name="q7" value="yes" required> Yes</label>
@@ -112,8 +82,7 @@
         </div>
       </div>
 
-      <div class="quiz-question" data-question="8"
-           data-primary="Verification Bypass" data-secondary="Clarity Collapse" data-tertiary="Contextual Amnesia">
+      <div class="quiz-question" data-question="8" data-primary="Verification Bypass" data-secondary="Clarity Collapse" data-tertiary="Contextual Amnesia">
         <p class="q">8) I often feel unsure whether an outcome is still aligned with intent.</p>
         <div class="choices">
           <label><input type="radio" name="q8" value="yes" required> Yes</label>
@@ -121,8 +90,7 @@
         </div>
       </div>
 
-      <div class="quiz-question" data-question="9"
-           data-primary="Feedback Blindness" data-secondary="Trust Erosion" data-tertiary="Verification Bypass">
+      <div class="quiz-question" data-question="9" data-primary="Feedback Blindness" data-secondary="Trust Erosion" data-tertiary="Verification Bypass">
         <p class="q">9) My team or system moves smoothly but I rarely hear disagreement or resistance.</p>
         <div class="choices">
           <label><input type="radio" name="q9" value="yes" required> Yes</label>
@@ -130,8 +98,7 @@
         </div>
       </div>
 
-      <div class="quiz-question" data-question="10"
-           data-primary="Contextual Amnesia" data-secondary="Pacing Drift" data-tertiary="Rebuild Resistance">
+      <div class="quiz-question" data-question="10" data-primary="Contextual Amnesia" data-secondary="Pacing Drift" data-tertiary="Rebuild Resistance">
         <p class="q">10) I can’t remember why some decisions were made — we just keep moving.</p>
         <div class="choices">
           <label><input type="radio" name="q10" value="yes" required> Yes</label>
@@ -139,8 +106,7 @@
         </div>
       </div>
 
-      <div class="quiz-question" data-question="11"
-           data-primary="Trust Erosion" data-secondary="Verification Bypass" data-tertiary="Delegation Breakdown">
+      <div class="quiz-question" data-question="11" data-primary="Trust Erosion" data-secondary="Verification Bypass" data-tertiary="Delegation Breakdown">
         <p class="q">11) I often wonder if I can still trust the outputs our systems rely on.</p>
         <div class="choices">
           <label><input type="radio" name="q11" value="yes" required> Yes</label>
@@ -148,8 +114,7 @@
         </div>
       </div>
 
-      <div class="quiz-question" data-question="12"
-           data-primary="Pacing Drift" data-secondary="Systemic Overload" data-tertiary="Clarity Collapse">
+      <div class="quiz-question" data-question="12" data-primary="Pacing Drift" data-secondary="Systemic Overload" data-tertiary="Clarity Collapse">
         <p class="q">12) Things are moving fast — but I’m not sure they’re moving in the right direction.</p>
         <div class="choices">
           <label><input type="radio" name="q12" value="yes" required> Yes</label>
@@ -158,24 +123,28 @@
       </div>
 
       <div class="actions">
-        <button type="submit" class="btn">See My Book Recommendations</button>
+        <button type="submit" class="btn btn-primary">See My Book Recommendations</button>
         <div class="error" id="error-msg" role="alert" aria-live="polite">Please answer all 12 questions.</div>
       </div>
     </form>
 
     <!-- RESULTS (hidden until submit) -->
     <section id="results" class="grid" style="display:none;">
-      <article class="card">
+      <!-- PRIMARY -->
+      <article class="card result-card">
         <h2 class="card-title" id="primary-book-title">Primary Recommendation</h2>
         <img id="primary-book-image" alt="" class="cover">
+        <a id="primary-buy-btn" href="#" target="_blank" rel="noopener" class="buy-btn">Buy Here</a>
       </article>
 
-      <article class="card" id="secondary-card">
+      <!-- SECONDARY (always chosen from the 10 published categories) -->
+      <article class="card result-card">
         <h2 class="card-title" id="secondary-book-title">Secondary Recommendation</h2>
         <img id="secondary-book-image" alt="" class="cover">
+        <a id="secondary-buy-btn" href="#" target="_blank" rel="noopener" class="buy-btn">Buy Here</a>
       </article>
 
-      <div class="actions" style="margin-top:8px;justify-content:center;">
+      <div class="actions actions-bottom">
         <button id="retake" class="btn" type="button">Retake Quiz</button>
       </div>
     </section>
@@ -183,7 +152,7 @@
 
   <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // ------ Category -> Book (ONLY the 10 published titles) ------
+    // 10 published categories -> book titles
     const categoryToBook = {
       "Clarity Collapse": "Fix the Flow",
       "Systemic Overload": "The Cost You Didn't Count",
@@ -195,10 +164,10 @@
       "Verification Bypass": "What Automation Erases",
       "Feedback Blindness": "Start Smaller Stay Standing",
       "Contextual Amnesia": "The Cost of Rushing"
-      // NOTE: Trust Erosion + Pacing Drift not included here on purpose (no books yet)
+      // Trust Erosion / Pacing Drift intentionally excluded until books are published
     };
 
-    // ------ Book cover images (your live URLs) ------
+    // Cover images (use your live GitHub Pages URLs)
     const bookImages = {
       "Fix the Flow": "https://JPero85.github.io/joe-quiz/fix-the-flow.jpg",
       "The Cost You Didn't Count": "https://JPero85.github.io/joe-quiz/the-cost-you-didnt-count.jpg",
@@ -211,6 +180,23 @@
       "Start Smaller Stay Standing": "https://JPero85.github.io/joe-quiz/start-smaller-stay-standing-(2).jpg",
       "The Cost of Rushing": "https://JPero85.github.io/joe-quiz/the-cost-of-rushing.jpg"
     };
+
+    // Buy links (replace these with your real product URLs)
+    function getBuyLink(bookTitle) {
+      const buyLinks = {
+        "Fix the Flow": "https://your-link.com/fix-the-flow",
+        "The Cost You Didn't Count": "https://your-link.com/the-cost-you-didnt-count",
+        "Polished Outside Broken Inside": "https://your-link.com/polished-outside-broken-inside",
+        "Start With What Hurts": "https://your-link.com/start-with-what-hurts",
+        "Start Hard Coast Later": "https://your-link.com/start-hard-coast-later",
+        "Finish It Right": "https://your-link.com/finish-it-right",
+        "How to Think Like AI, So You Don't Stop Thinking At All": "https://your-link.com/how-to-think-with-ai",
+        "What Automation Erases": "https://your-link.com/what-automation-erases",
+        "Start Smaller Stay Standing": "https://your-link.com/start-smaller-stay-standing",
+        "The Cost of Rushing": "https://your-link.com/the-cost-of-rushing"
+      };
+      return buyLinks[bookTitle] || "#";
+    }
 
     const form = document.getElementById("quiz-form");
     const results = document.getElementById("results");
@@ -240,19 +226,19 @@
         }
       });
 
-      // --- Only consider the 10 published categories when picking books ---
-      const publishedCats = Object.keys(categoryToBook); // exactly 10
+      // --- Rank ONLY the 10 published categories, using 0 for any that weren't triggered ---
+      const publishedCats = Object.keys(categoryToBook);
       const rankedPublished = [...publishedCats].sort((a,b) =>
         (scores[b]||0) - (scores[a]||0) || a.localeCompare(b)
       );
 
-      const primaryCat   = rankedPublished[0];                               // best of the 10
-      const secondaryCat = rankedPublished.find(c => c !== primaryCat) || primaryCat; // next-best of the 10
+      const primaryCat   = rankedPublished[0];
+      const secondaryCat = rankedPublished.find(c => c !== primaryCat) || primaryCat;
 
       const pBook = categoryToBook[primaryCat];
       const sBook = categoryToBook[secondaryCat];
 
-      // --- Images ---
+      // Images
       const pImg = bookImages[pBook] || "";
       const sImg = bookImages[sBook] || "";
 
@@ -260,11 +246,13 @@
       document.getElementById("primary-book-title").textContent = pBook;
       const pImgEl = document.getElementById("primary-book-image");
       if (pImg) { pImgEl.src = pImg; pImgEl.alt = pBook; } else { pImgEl.removeAttribute("src"); pImgEl.alt = ""; }
+      document.getElementById("primary-buy-btn").href = getBuyLink(pBook);
 
-      // --- Render Secondary (always choose from the 10; distinct from primary if possible) ---
+      // --- Render Secondary (always from the 10) ---
       document.getElementById("secondary-book-title").textContent = sBook;
       const sImgEl = document.getElementById("secondary-book-image");
       if (sImg) { sImgEl.src = sImg; sImgEl.alt = sBook; } else { sImgEl.removeAttribute("src"); sImgEl.alt = ""; }
+      document.getElementById("secondary-buy-btn").href = getBuyLink(sBook);
 
       // Swap views
       form.style.display = "none";
@@ -280,20 +268,6 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   });
-    <!-- PRIMARY BOOK -->
-<article class="card">
-  <h2 class="card-title" id="primary-book-title">Primary Recommendation</h2>
-  <img id="primary-book-image" alt="" class="cover">
-  <a id="primary-buy-btn" href="#" target="_blank" class="buy-btn">Buy Here</a>
-</article>
-
-<!-- SECONDARY BOOK -->
-<article class="card" id="secondary-card">
-  <h2 class="card-title" id="secondary-book-title">Secondary Recommendation</h2>
-  <img id="secondary-book-image" alt="" class="cover">
-  <a id="secondary-buy-btn" href="#" target="_blank" class="buy-btn">Buy Here</a>
-</article>
-
   </script>
 </body>
 </html>
