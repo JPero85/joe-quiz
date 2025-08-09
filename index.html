@@ -11,7 +11,7 @@
   <main class="container">
     <!-- HEADER / INTRO -->
     <header class="header">
-      <h1 class="title">🧭 Start Here!</h1>
+      <h2 class="title">🧭 Start Here!</h2>
       <p class="subtitle">This quiz is designed to help surface where friction is showing up in your system, even if it's not obvious yet.</p>
       <p class="subtitle">For each statement below, choose the answer that best reflects your current experience.</p>
       <p class="subtitle">There are no wrong answers, just honest signals.</p>
@@ -128,18 +128,16 @@
       </div>
     </form>
 
-    <!-- RESULTS (hidden until submit) -->
+    <!-- RESULTS -->
     <section id="results" class="grid" style="display:none;">
-      <!-- PRIMARY -->
       <article class="card result-card">
-        <h2 class="card-title" id="primary-book-title">Primary Recommendation</h2>
+        <h3 class="card-title" id="primary-book-title">Primary Recommendation</h3>
         <img id="primary-book-image" alt="" class="cover">
         <a id="primary-buy-btn" href="#" target="_blank" rel="noopener" class="buy-btn">Buy Here</a>
       </article>
 
-      <!-- SECONDARY (always chosen from the 10 published categories) -->
       <article class="card result-card">
-        <h2 class="card-title" id="secondary-book-title">Secondary Recommendation</h2>
+        <h3 class="card-title" id="secondary-book-title">Secondary Recommendation</h3>
         <img id="secondary-book-image" alt="" class="cover">
         <a id="secondary-buy-btn" href="#" target="_blank" rel="noopener" class="buy-btn">Buy Here</a>
       </article>
@@ -152,7 +150,6 @@
 
   <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // 10 published categories -> book titles
     const categoryToBook = {
       "Clarity Collapse": "Fix the Flow",
       "Systemic Overload": "The Cost You Didn't Count",
@@ -164,10 +161,8 @@
       "Verification Bypass": "What Automation Erases",
       "Feedback Blindness": "Start Smaller Stay Standing",
       "Contextual Amnesia": "The Cost of Rushing"
-      // Trust Erosion / Pacing Drift intentionally excluded until books are published
     };
 
-    // Cover images (use your live GitHub Pages URLs)
     const bookImages = {
       "Fix the Flow": "https://JPero85.github.io/joe-quiz/fix-the-flow.jpg",
       "The Cost You Didn't Count": "https://JPero85.github.io/joe-quiz/the-cost-you-didnt-count.jpg",
@@ -181,7 +176,6 @@
       "The Cost of Rushing": "https://JPero85.github.io/joe-quiz/the-cost-of-rushing.jpg"
     };
 
-    // Buy links (replace these with your real product URLs)
     function getBuyLink(bookTitle) {
       const buyLinks = {
         "Fix the Flow": "https://your-link.com/fix-the-flow",
@@ -214,7 +208,7 @@
       });
       if (!allAnswered) { errorEl.style.display = "block"; return; }
 
-      // --- Score calculation (4/2/1 for Yes answers) ---
+      // Score (4/2/1 on Yes)
       const scores = {};
       document.querySelectorAll(".quiz-question").forEach(q => {
         const sel = q.querySelector("input[type='radio']:checked");
@@ -226,29 +220,27 @@
         }
       });
 
-      // --- Rank ONLY the 10 published categories, using 0 for any that weren't triggered ---
+      // Rank only the 10 published categories
       const publishedCats = Object.keys(categoryToBook);
       const rankedPublished = [...publishedCats].sort((a,b) =>
         (scores[b]||0) - (scores[a]||0) || a.localeCompare(b)
       );
-
       const primaryCat   = rankedPublished[0];
       const secondaryCat = rankedPublished.find(c => c !== primaryCat) || primaryCat;
 
       const pBook = categoryToBook[primaryCat];
       const sBook = categoryToBook[secondaryCat];
 
-      // Images
       const pImg = bookImages[pBook] || "";
       const sImg = bookImages[sBook] || "";
 
-      // --- Render Primary ---
+      // Render primary
       document.getElementById("primary-book-title").textContent = pBook;
       const pImgEl = document.getElementById("primary-book-image");
       if (pImg) { pImgEl.src = pImg; pImgEl.alt = pBook; } else { pImgEl.removeAttribute("src"); pImgEl.alt = ""; }
       document.getElementById("primary-buy-btn").href = getBuyLink(pBook);
 
-      // --- Render Secondary (always from the 10) ---
+      // Render secondary
       document.getElementById("secondary-book-title").textContent = sBook;
       const sImgEl = document.getElementById("secondary-book-image");
       if (sImg) { sImgEl.src = sImg; sImgEl.alt = sBook; } else { sImgEl.removeAttribute("src"); sImgEl.alt = ""; }
@@ -260,7 +252,6 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    // Retake
     document.getElementById("retake").addEventListener("click", () => {
       form.reset();
       results.style.display = "none";
