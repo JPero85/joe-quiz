@@ -6,7 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css.style.css" />
+  <style>
+    :root { --text:#0f172a; --muted:#475569; --border:#e2e8f0; --bg:#f8fafc; --card:#fff; }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+    .container{max-width:900px;margin:0 auto;padding:2rem 1rem;text-align:center}
+    .title{font-size:clamp(30px,3.2vw,40px);font-weight:800;margin:0 0 .4rem}
+    .subtitle{color:var(--muted);margin:.2rem 0}
+    .intro-list{color:var(--text);text-align:left;display:inline-block;margin:.4rem 0 0;padding-left:1.2rem}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1rem;box-shadow:0 1px 2px rgba(15,23,42,.04);text-align:left;display:inline-block;width:100%}
+    .q{font-weight:700;margin:.2rem 0 .5rem}
+    .quiz-question{border:1px solid var(--border);border-radius:12px;padding:12px;margin:.6rem 0;background:#fff;text-align:left}
+    .choices{display:flex;gap:1rem;flex-wrap:wrap}
+    .choices label{display:inline-flex;align-items:center;gap:.5rem}
+    .actions{display:flex;justify-content:center;gap:12px;align-items:center;margin-top:12px}
+    .btn{appearance:none;border:0;border-radius:12px;padding:.9rem 1.1rem;font-weight:700;cursor:pointer;background:#111827;color:#fff;box-shadow:0 6px 18px rgba(17,24,39,.18)}
+    .btn:active{transform:translateY(1px)}
+    .error{display:none;color:#b91c1c;font-weight:700}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:1.25rem}
+    .card-title{font-weight:800;margin:.2rem 0 .6rem;text-align:center}
+    .cover{width:100%;height:auto;border-radius:12px;border:1px solid var(--border);background:#f1f5f9;display:block;margin:.25rem auto;max-width:280px}
+    /* bump base sizes a bit for readability */
+    .container, .container p, .container li, .container label, .container button, .container h1, .container h2 { font-size: 1.15rem; line-height: 1.65; }
+  </style>
 </head>
 <body>
   <main class="container">
@@ -16,7 +38,7 @@
       <p class="subtitle">This quiz is designed to help surface where friction is showing up in your system, even if it's not obvious yet.</p>
       <p class="subtitle">For each statement below, choose the answer that best reflects your current experience.</p>
       <p class="subtitle">There are no wrong answers, just honest signals.</p>
-      <ul class="intro-list" style="margin:8px 0 0 0; padding-left:1.2rem;">
+      <ul class="intro-list">
         <li>👍 <strong>"Yes, this is true for me"</strong> means the statement resonates or regularly shows up in your work.</li>
         <li>👎 <strong>"No, this doesn't reflect my experience"</strong> means it's not something you currently deal with.</li>
       </ul>
@@ -136,7 +158,7 @@
       </div>
 
       <div class="actions">
-        <button type="submit" class="btn btn-primary">See My Book Recommendations</button>
+        <button type="submit" class="btn">See My Book Recommendations</button>
         <div class="error" id="error-msg" role="alert" aria-live="polite">Please answer all 12 questions.</div>
       </div>
     </form>
@@ -148,20 +170,20 @@
         <img id="primary-book-image" alt="" class="cover">
       </article>
 
-      <article class="card" id="secondary-card" style="display:none;">
+      <article class="card" id="secondary-card">
         <h2 class="card-title" id="secondary-book-title">Secondary Recommendation</h2>
         <img id="secondary-book-image" alt="" class="cover">
       </article>
 
-      <div class="actions" style="margin-top:8px;">
-        <button id="retake" class="btn">Retake Quiz</button>
+      <div class="actions" style="margin-top:8px;justify-content:center;">
+        <button id="retake" class="btn" type="button">Retake Quiz</button>
       </div>
     </section>
   </main>
 
   <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Category -> Book
+    // ------ Category -> Book (ONLY the 10 published titles) ------
     const categoryToBook = {
       "Clarity Collapse": "Fix the Flow",
       "Systemic Overload": "The Cost You Didn't Count",
@@ -172,13 +194,11 @@
       "Delegation Breakdown": "How to Think Like AI, So You Don't Stop Thinking At All",
       "Verification Bypass": "What Automation Erases",
       "Feedback Blindness": "Start Smaller Stay Standing",
-      "Contextual Amnesia": "The Cost of Rushing",
-      // Future expansion (no books yet):
-      "Trust Erosion": "",
-      "Pacing Drift": ""
+      "Contextual Amnesia": "The Cost of Rushing"
+      // NOTE: Trust Erosion + Pacing Drift not included here on purpose (no books yet)
     };
 
-    // Book cover images (live URLs)
+    // ------ Book cover images (your live URLs) ------
     const bookImages = {
       "Fix the Flow": "https://JPero85.github.io/joe-quiz/fix-the-flow.jpg",
       "The Cost You Didn't Count": "https://JPero85.github.io/joe-quiz/the-cost-you-didnt-count.jpg",
@@ -208,7 +228,7 @@
       });
       if (!allAnswered) { errorEl.style.display = "block"; return; }
 
-      // --- Score calculation ---
+      // --- Score calculation (4/2/1 for Yes answers) ---
       const scores = {};
       document.querySelectorAll(".quiz-question").forEach(q => {
         const sel = q.querySelector("input[type='radio']:checked");
@@ -220,48 +240,31 @@
         }
       });
 
-      // --- Ranking ---
-      const ranked = Object.entries(scores)
-        .sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0]))
-        .map(([k]) => k);
+      // --- Only consider the 10 published categories when picking books ---
+      const publishedCats = Object.keys(categoryToBook); // exactly 10
+      const rankedPublished = [...publishedCats].sort((a,b) =>
+        (scores[b]||0) - (scores[a]||0) || a.localeCompare(b)
+      );
 
-      const primaryStack = ranked.slice(0,3);
-      const secondaryStack = ranked.filter(c => !primaryStack.includes(c)).slice(0,3);
+      const primaryCat   = rankedPublished[0];                               // best of the 10
+      const secondaryCat = rankedPublished.find(c => c !== primaryCat) || primaryCat; // next-best of the 10
 
-      // --- Primary & Secondary Book Selection ---
-      const pBook = categoryToBook[primaryStack[0]] || "No Match";
+      const pBook = categoryToBook[primaryCat];
+      const sBook = categoryToBook[secondaryCat];
 
-      // Helper to find the first valid mapped book from a stack
-      function firstMappedBookFrom(stack, map) {
-        for (const cat of stack) {
-          const book = map[cat];
-          if (book && book.trim()) return book;
-        }
-        return "";
-      }
-      const sBook = firstMappedBookFrom(secondaryStack, categoryToBook);
-
-      // --- Image URLs ---
-      const pImg = pBook ? (bookImages[pBook] || "") : "";
-      const sImg = sBook ? (bookImages[sBook] || "") : "";
+      // --- Images ---
+      const pImg = bookImages[pBook] || "";
+      const sImg = bookImages[sBook] || "";
 
       // --- Render Primary ---
-      document.getElementById("primary-book-title").textContent = pBook || "No Match";
+      document.getElementById("primary-book-title").textContent = pBook;
       const pImgEl = document.getElementById("primary-book-image");
-      if (pImg) { pImgEl.src = pImg; pImgEl.alt = pBook; }
-      else { pImgEl.removeAttribute("src"); pImgEl.alt = ""; }
+      if (pImg) { pImgEl.src = pImg; pImgEl.alt = pBook; } else { pImgEl.removeAttribute("src"); pImgEl.alt = ""; }
 
-      // --- Render Secondary (show only if mapped) ---
-      const secondaryCard = document.getElementById("secondary-card");
-      if (sBook) {
-        secondaryCard.style.display = "block";
-        document.getElementById("secondary-book-title").textContent = sBook;
-        const sImgEl = document.getElementById("secondary-book-image");
-        if (sImg) { sImgEl.src = sImg; sImgEl.alt = sBook; }
-        else { sImgEl.removeAttribute("src"); sImgEl.alt = ""; }
-      } else {
-        secondaryCard.style.display = "none";
-      }
+      // --- Render Secondary (always choose from the 10; distinct from primary if possible) ---
+      document.getElementById("secondary-book-title").textContent = sBook;
+      const sImgEl = document.getElementById("secondary-book-image");
+      if (sImg) { sImgEl.src = sImg; sImgEl.alt = sBook; } else { sImgEl.removeAttribute("src"); sImgEl.alt = ""; }
 
       // Swap views
       form.style.display = "none";
