@@ -118,3 +118,32 @@ body {
   margin: 4px 6px 0 0;
   background: #fff;
 }
+/* === Center quiz + increase font size === */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container, .container p, .container li, .container label, .container button, .container h1, .container h2 {
+  font-size: 1.15rem; /* increase base font size */
+  line-height: 1.6;
+}
+
+.quiz-question {
+  text-align: center; /* center questions + answers */
+  margin-bottom: 1.5rem;
+}
+
+.choices {
+  display: inline-block; /* keeps the radio buttons centered under each question */
+  text-align: left;
+}
+
+.cover {
+  display: block;
+  margin: 0.5rem auto;
+  max-width: 250px;
+}
+
